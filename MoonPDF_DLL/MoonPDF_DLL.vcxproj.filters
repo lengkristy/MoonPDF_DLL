@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Externel">
+      <UniqueIdentifier>{3e4b1e24-51d2-4763-93e9-2950bf400e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Externel">
+      <UniqueIdentifier>{c4be7ed0-5f37-4ed4-870e-19a25ea79fac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tools">
+      <UniqueIdentifier>{f1e0dcd6-ea7d-48f7-8131-6fc3b7cbd74c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tools">
+      <UniqueIdentifier>{54eac2d0-1d66-4ca3-ab68-3b8d651abd32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Common">
+      <UniqueIdentifier>{a352a4a1-0790-499c-ae51-568fdacfb3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Common">
+      <UniqueIdentifier>{4c07fd58-3d09-4d96-922f-d925643e4904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\mupdf">
+      <UniqueIdentifier>{ab917dd3-58a7-44c7-9f93-4b1cf5a6ae0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\mupdf">
+      <UniqueIdentifier>{a0ca07a7-14d4-4f9a-af4a-758652a70837}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Externel\MooPDFTool.h">
+      <Filter>头文件\Externel</Filter>
+    </ClInclude>
+    <ClInclude Include="Externel\MoonPDFLoader.h">
+      <Filter>头文件\Externel</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\MoonPdfUtils.h">
+      <Filter>头文件\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Externel\ExternelDefine.h">
+      <Filter>头文件\Externel</Filter>
+    </ClInclude>
+    <ClInclude Include="Externel\MoonPDF.h">
+      <Filter>头文件\Externel</Filter>
+    </ClInclude>
+    <ClInclude Include="Externel\MoonPDFView.h">
+      <Filter>头文件\Externel</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\StringHelper.h">
+      <Filter>头文件\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="mupdf\pdfapp.h">
+      <Filter>头文件\mupdf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MoonPDF_DLL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Externel\MooPDFTool.cpp">
+      <Filter>源文件\Externel</Filter>
+    </ClCompile>
+    <ClCompile Include="Externel\MoonPDFLoader.cpp">
+      <Filter>源文件\Externel</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\MoonPdfUtils.cpp">
+      <Filter>源文件\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalDefine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Externel\MoonPDFView.cpp">
+      <Filter>源文件\Externel</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\StringHelper.cpp">
+      <Filter>源文件\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="mupdf\pdfapp.cpp">
+      <Filter>源文件\mupdf</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
