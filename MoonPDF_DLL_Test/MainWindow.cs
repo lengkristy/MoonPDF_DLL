@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -90,7 +91,16 @@ namespace MoonPDF_DLL_Test
             OpenFileDialog file = new OpenFileDialog();
             file.Filter = "pdf files(*.pdf)|*.pdf|All files(*.*)|*.*";
             file.ShowDialog();
-            string text = file.FileName;
+            splitFilePath = file.FileName;
+            Thread childThread = new Thread(pdfSplitThread);
+            childThread.Start();
+        }
+
+        string splitFilePath = string.Empty;
+
+        private void pdfSplitThread()
+        {
+            string text = splitFilePath;
             int count = MoonPDF_DLL.MoonToolsGetPDFPageCount(new StringBuilder(text));
             //计算性能
             DateTime startTime = DateTime.Now;
@@ -100,7 +110,7 @@ namespace MoonPDF_DLL_Test
                 StringBuilder sbPath = new StringBuilder();
                 sbPath.Append(text.Substring(0, text.LastIndexOf('\\')));
                 sbPath.Append("\\");
-                sbPath.Append(i+1);
+                sbPath.Append(i + 1);
                 sbPath.Append(".pdf");
                 MoonPDF_DLL.MoonToolsExtractPageToSave(new StringBuilder(text), sbPath, i + 1);
             }
