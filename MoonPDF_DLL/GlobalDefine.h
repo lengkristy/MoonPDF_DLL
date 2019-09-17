@@ -6,7 +6,7 @@
 #include <Windows.h>
 
  //导入mupdf相关库，使用的库版本为：mupdf-1.15.0
-#ifdef DEBUG
+#ifdef _DEBUG
 #pragma comment(lib, "lib\\debug\\libmupdf.lib")
 #pragma comment(lib, "lib\\debug\\libresources.lib")
 #pragma comment(lib, "lib\\debug\\libthirdparty.lib")
