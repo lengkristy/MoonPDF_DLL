@@ -119,5 +119,10 @@ namespace MoonPDF_DLL_Test
             var tim = endTime - startTime;
             MessageBox.Show("总共花费：" + tim.TotalSeconds + "秒");
         }
+
+        private void btnAddAnnot_Click(object sender, EventArgs e)
+        {
+            MoonPDF_DLL.MoonAddTextAnnotation(new StringBuilder("测试注释"), new StringBuilder("lengyue"), 0, 300, 350, 500, 550);
+        }
     }
 }

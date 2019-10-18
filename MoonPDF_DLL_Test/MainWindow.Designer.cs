@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnSplitePage = new System.Windows.Forms.Button();
+            this.btnGoto = new System.Windows.Forms.Button();
+            this.tbPage = new System.Windows.Forms.TextBox();
             this.btnNSZXZ = new System.Windows.Forms.Button();
             this.btnSSZXX = new System.Windows.Forms.Button();
             this.btnZoomOut = new System.Windows.Forms.Button();
             this.btnZoonIn = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.tbSplitPdfPath = new System.Windows.Forms.TextBox();
             this.tbPdfPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pdfPanel = new System.Windows.Forms.Panel();
-            this.tbPage = new System.Windows.Forms.TextBox();
-            this.btnGoto = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbSplitPdfPath = new System.Windows.Forms.TextBox();
-            this.btnSplitePage = new System.Windows.Forms.Button();
+            this.btnAddAnnot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnAddAnnot);
             this.splitContainer1.Panel1.Controls.Add(this.btnSplitePage);
             this.splitContainer1.Panel1.Controls.Add(this.btnGoto);
             this.splitContainer1.Panel1.Controls.Add(this.tbPage);
@@ -76,6 +78,33 @@
             this.splitContainer1.Size = new System.Drawing.Size(958, 667);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnSplitePage
+            // 
+            this.btnSplitePage.Location = new System.Drawing.Point(306, 37);
+            this.btnSplitePage.Name = "btnSplitePage";
+            this.btnSplitePage.Size = new System.Drawing.Size(75, 23);
+            this.btnSplitePage.TabIndex = 6;
+            this.btnSplitePage.Text = "拆页页面";
+            this.btnSplitePage.UseVisualStyleBackColor = true;
+            this.btnSplitePage.Click += new System.EventHandler(this.btnSplitePage_Click);
+            // 
+            // btnGoto
+            // 
+            this.btnGoto.Location = new System.Drawing.Point(775, 8);
+            this.btnGoto.Name = "btnGoto";
+            this.btnGoto.Size = new System.Drawing.Size(75, 23);
+            this.btnGoto.TabIndex = 5;
+            this.btnGoto.Text = "跳转到页";
+            this.btnGoto.UseVisualStyleBackColor = true;
+            this.btnGoto.Click += new System.EventHandler(this.btnGoto_Click);
+            // 
+            // tbPage
+            // 
+            this.tbPage.Location = new System.Drawing.Point(721, 10);
+            this.tbPage.Name = "tbPage";
+            this.tbPage.Size = new System.Drawing.Size(48, 21);
+            this.tbPage.TabIndex = 4;
             // 
             // btnNSZXZ
             // 
@@ -127,12 +156,28 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // tbSplitPdfPath
+            // 
+            this.tbSplitPdfPath.Location = new System.Drawing.Point(66, 38);
+            this.tbSplitPdfPath.Name = "tbSplitPdfPath";
+            this.tbSplitPdfPath.Size = new System.Drawing.Size(234, 21);
+            this.tbSplitPdfPath.TabIndex = 1;
+            // 
             // tbPdfPath
             // 
             this.tbPdfPath.Location = new System.Drawing.Point(66, 10);
             this.tbPdfPath.Name = "tbPdfPath";
             this.tbPdfPath.Size = new System.Drawing.Size(234, 21);
             this.tbPdfPath.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "PDF路径";
             // 
             // label1
             // 
@@ -153,48 +198,15 @@
             this.pdfPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.pdfPanel_Paint);
             this.pdfPanel.Resize += new System.EventHandler(this.pdfPanel_Resize);
             // 
-            // tbPage
+            // btnAddAnnot
             // 
-            this.tbPage.Location = new System.Drawing.Point(721, 10);
-            this.tbPage.Name = "tbPage";
-            this.tbPage.Size = new System.Drawing.Size(48, 21);
-            this.tbPage.TabIndex = 4;
-            // 
-            // btnGoto
-            // 
-            this.btnGoto.Location = new System.Drawing.Point(775, 8);
-            this.btnGoto.Name = "btnGoto";
-            this.btnGoto.Size = new System.Drawing.Size(75, 23);
-            this.btnGoto.TabIndex = 5;
-            this.btnGoto.Text = "跳转到页";
-            this.btnGoto.UseVisualStyleBackColor = true;
-            this.btnGoto.Click += new System.EventHandler(this.btnGoto_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "PDF路径";
-            // 
-            // tbSplitPdfPath
-            // 
-            this.tbSplitPdfPath.Location = new System.Drawing.Point(66, 38);
-            this.tbSplitPdfPath.Name = "tbSplitPdfPath";
-            this.tbSplitPdfPath.Size = new System.Drawing.Size(234, 21);
-            this.tbSplitPdfPath.TabIndex = 1;
-            // 
-            // btnSplitePage
-            // 
-            this.btnSplitePage.Location = new System.Drawing.Point(306, 37);
-            this.btnSplitePage.Name = "btnSplitePage";
-            this.btnSplitePage.Size = new System.Drawing.Size(75, 23);
-            this.btnSplitePage.TabIndex = 6;
-            this.btnSplitePage.Text = "拆页页面";
-            this.btnSplitePage.UseVisualStyleBackColor = true;
-            this.btnSplitePage.Click += new System.EventHandler(this.btnSplitePage_Click);
+            this.btnAddAnnot.Location = new System.Drawing.Point(856, 8);
+            this.btnAddAnnot.Name = "btnAddAnnot";
+            this.btnAddAnnot.Size = new System.Drawing.Size(75, 23);
+            this.btnAddAnnot.TabIndex = 7;
+            this.btnAddAnnot.Text = "添加注释";
+            this.btnAddAnnot.UseVisualStyleBackColor = true;
+            this.btnAddAnnot.Click += new System.EventHandler(this.btnAddAnnot_Click);
             // 
             // MainWindow
             // 
@@ -230,6 +242,7 @@
         private System.Windows.Forms.TextBox tbSplitPdfPath;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSplitePage;
+        private System.Windows.Forms.Button btnAddAnnot;
     }
 }
 

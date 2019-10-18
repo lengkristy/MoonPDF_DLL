@@ -47,6 +47,7 @@ extern int wingetcertpath(char *buf, int len);
 extern int wingetsavepath(pdfapp_t*, char *buf, int len);
 extern void winalert(pdfapp_t *, pdf_alert_event *alert);
 extern void winprint(pdfapp_t *);
+extern void messagebox(char* msg);
 extern void winadvancetimer(pdfapp_t *, float duration);
 extern void winreplacefile(char *source, char *target);
 extern void wincopyfile(char *source, char *target);
@@ -195,5 +196,11 @@ void pdf_clockwise_rotation(pdfapp_t *app);
 *   pdf逆时针旋转90度
 */
 void pdf_contrarotate(pdfapp_t *app);
+
+/**
+ * 函数说明：
+ *   保存修改后的pdf
+ */
+void pdfapp_save_draw(pdfapp_t *app);
 
 #endif

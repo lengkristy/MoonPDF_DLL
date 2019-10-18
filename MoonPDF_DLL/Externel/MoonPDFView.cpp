@@ -239,6 +239,41 @@ void MoonGotoPage(int pageIndex)
 	pdfapp_gotopage(&g_moonPdfApp, pageIndex);//页面跳转
 }
 
+/**
+* 函数说明：
+*	添加文本注释
+* 参数：
+*  context：文本内容
+*  author：作者
+*  pageIndex：页索引
+*  leftTopX：左顶点x值
+*  leftTopY：左顶点y值
+*  rightBottomX：右底点x值
+*  rightBottomY：右底点y值
+* 返回值：
+*   成功返回1，失败返回0
+*/
+void MoonAddTextAnnotation(char* context, char* author, int pageIndex, float leftTopX, float leftTopY, float rightBottomX, float rightBottomY)
+{
+	pdf_document *idoc;
+	idoc = pdf_specifics(g_moonPdfApp.ctx, g_moonPdfApp.doc);
+	pdf_page* page = pdf_load_page(g_moonPdfApp.ctx, idoc, pageIndex);
+	pdf_annot* annot = pdf_create_annot(g_moonPdfApp.ctx, page, PDF_ANNOT_TEXT);
+	//将context转成utf8
+	string utf8Content = UnicodeToUTF8(ANSIToUnicode(context));
+	pdf_set_annot_contents(g_moonPdfApp.ctx, annot, utf8Content.c_str());
+	string utf8Author = UnicodeToUTF8(ANSIToUnicode(author));
+	pdf_set_annot_author(g_moonPdfApp.ctx, annot, utf8Author.c_str());
+	pdf_set_annot_is_open(g_moonPdfApp.ctx, annot, TRUE);
+	pdf_set_annot_border(g_moonPdfApp.ctx, annot, 4);
+	fz_rect rect;
+	rect.x0 = leftTopX;
+	rect.y0 = leftTopY;
+	rect.x1 = rightBottomX;
+	rect.y1 = rightBottomY;
+	pdf_set_annot_rect(g_moonPdfApp.ctx, annot, rect);
+	pdfapp_save_draw(&g_moonPdfApp);
+}
 
 
 //////////////////////////////////////////////////////定义pdf 信息框///////////////////////////////////////////////////////////////////
@@ -538,6 +573,11 @@ void winalert(pdfapp_t *app, pdf_alert_event *alert)
 void winprint(pdfapp_t *app)
 {
 	MessageBoxA(g_hShowPdfWnd, "The MuPDF library supports printing, but this application currently does not", "Print document", MB_ICONWARNING);
+}
+
+void messagebox(char* msg)
+{
+	MessageBoxA(g_hShowPdfWnd, msg, "消息", MB_OK);
 }
 
 #define OUR_TIMER_ID 1

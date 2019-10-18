@@ -443,22 +443,18 @@ static int pdfapp_save(pdfapp_t *app)
 	pdf_document *idoc = pdf_specifics(app->ctx, app->doc);
 	if (!idoc)
 		return 0;
-
 	if (wingetsavepath(app, buf, PATH_MAX))
 	{
 		pdf_write_options opts = { 0 };
-
 		opts.do_incremental = pdf_can_be_saved_incrementally(app->ctx, idoc);
-
 		if (strcmp(buf, app->docpath) != 0)
-		{
+		{			
 			wincopyfile(app->docpath, buf);
 			pdf_save_document(app->ctx, idoc, buf, &opts);
 			pdfapp_close(app);
 			pdfapp_open(app, buf, 1);
 			return 1;
 		}
-
 		if (gen_tmp_file(buf, PATH_MAX))
 		{
 			int written = 0;
@@ -480,7 +476,6 @@ static int pdfapp_save(pdfapp_t *app)
 				pdfapp_close(app);
 				winreplacefile(buf, buf2);
 				pdfapp_open(app, buf2, 1);
-
 				return written;
 			}
 		}
@@ -1773,4 +1768,17 @@ void pdf_contrarotate(pdfapp_t *app)
 {
 	app->rotate -= 90;
 	pdfapp_showpage(app, 0, 1, 1, 0, 0);
+}
+
+/**
+* 函数说明：
+*   保存修改后的pdf
+*/
+void pdfapp_save_draw(pdfapp_t *app)
+{
+	pdf_document *idoc;
+	idoc = pdf_specifics(app->ctx, app->doc);
+	pdf_write_options opts = { 0 };
+	opts.do_incremental = pdf_can_be_saved_incrementally(app->ctx, idoc);
+	pdf_save_document(app->ctx, idoc, app->docpath,&opts);
 }

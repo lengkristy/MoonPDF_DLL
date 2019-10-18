@@ -78,3 +78,17 @@ MOONPDF_API_ int MoonGetPDFPageCount();
  *   pageIndex：页索引
  */
 MOONPDF_API_ void MoonGotoPage(int pageIndex);
+
+/**
+ * 函数说明：
+ *	添加文本注释
+ * 参数：
+ *  context：文本内容
+ *  author：作者
+ *  pageIndex：页索引
+ *  leftTopX：左顶点x值
+ *  leftTopY：左顶点y值
+ *  rightBottomX：右底点x值
+ *  rightBottomY：右底点y值
+ */
+MOONPDF_API_ void MoonAddTextAnnotation(char* context,char* author,int pageIndex,float leftTopX,float leftTopY,float rightBottomX,float rightBottomY);

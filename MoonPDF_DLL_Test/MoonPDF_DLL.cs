@@ -78,5 +78,10 @@ namespace MoonPDF_DLL_Test
                 CharSet = CharSet.Ansi, ExactSpelling = false,
                 CallingConvention = CallingConvention.Cdecl)]
         public static extern void MoonGotoPage(int pageIndex);
+
+        [DllImport("MoonPDF_DLL.dll", EntryPoint = "MoonAddTextAnnotation", SetLastError = true,
+                CharSet = CharSet.Ansi, ExactSpelling = false,
+                CallingConvention = CallingConvention.Cdecl)]
+        public static extern void MoonAddTextAnnotation(StringBuilder context, StringBuilder author, int pageIndex, float leftTopX, float leftTopY, float rightBottomX, float rightBottomY);
     }
 }
