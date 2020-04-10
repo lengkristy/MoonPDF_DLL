@@ -53,6 +53,26 @@ extern void winreplacefile(char *source, char *target);
 extern void wincopyfile(char *source, char *target);
 extern void winreloadpage(pdfapp_t *);
 
+//fz_cmm_engine fz_cmm_engine_lcms = {
+//	fz_lcms_new_instance,
+//	fz_lcms_drop_instance,
+//	fz_lcms_transform_pixmap,
+//	fz_lcms_transform_color,
+//	fz_lcms_init_link,
+//	fz_lcms_fin_link,
+//	fz_lcms_init_profile,
+//	fz_lcms_fin_profile,
+//};
+
+typedef struct{
+	int count, total;
+	int min, max;
+	int mininterp, maxinterp;
+	int minpage, maxpage;
+	char *minfilename;
+	char *maxfilename;
+} Timing;
+
 struct pdfapp_s
 {
 	/* current document params */
