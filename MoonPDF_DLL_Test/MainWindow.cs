@@ -122,7 +122,13 @@ namespace MoonPDF_DLL_Test
 
         private void btnAddAnnot_Click(object sender, EventArgs e)
         {
-            MoonPDF_DLL.MoonAddTextAnnotation(new StringBuilder("测试注释"), new StringBuilder("lengyue"), 0, 300, 350, 500, 550);
+            MoonPDF_DLL.MoonAddTextAnnotation(new StringBuilder("测试注释"), new StringBuilder("冷月"), 0, 300, 350, 500, 550);
+        }
+
+        private void BtnGetAnnotCount_Click(object sender, EventArgs e)
+        {
+            int count = MoonPDF_DLL.MoonGetAnnotationCount();
+            MessageBox.Show(count.ToString());
         }
     }
 }

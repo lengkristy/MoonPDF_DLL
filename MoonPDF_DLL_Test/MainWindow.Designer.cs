@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnAddAnnot = new System.Windows.Forms.Button();
             this.btnSplitePage = new System.Windows.Forms.Button();
             this.btnGoto = new System.Windows.Forms.Button();
             this.tbPage = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pdfPanel = new System.Windows.Forms.Panel();
-            this.btnAddAnnot = new System.Windows.Forms.Button();
+            this.BtnGetAnnotCount = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.BtnGetAnnotCount);
             this.splitContainer1.Panel1.Controls.Add(this.btnAddAnnot);
             this.splitContainer1.Panel1.Controls.Add(this.btnSplitePage);
             this.splitContainer1.Panel1.Controls.Add(this.btnGoto);
@@ -76,12 +78,22 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pdfPanel);
             this.splitContainer1.Size = new System.Drawing.Size(958, 667);
-            this.splitContainer1.SplitterDistance = 62;
+            this.splitContainer1.SplitterDistance = 108;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnAddAnnot
+            // 
+            this.btnAddAnnot.Location = new System.Drawing.Point(871, 8);
+            this.btnAddAnnot.Name = "btnAddAnnot";
+            this.btnAddAnnot.Size = new System.Drawing.Size(75, 23);
+            this.btnAddAnnot.TabIndex = 7;
+            this.btnAddAnnot.Text = "添加注释";
+            this.btnAddAnnot.UseVisualStyleBackColor = true;
+            this.btnAddAnnot.Click += new System.EventHandler(this.btnAddAnnot_Click);
             // 
             // btnSplitePage
             // 
-            this.btnSplitePage.Location = new System.Drawing.Point(306, 37);
+            this.btnSplitePage.Location = new System.Drawing.Point(306, 82);
             this.btnSplitePage.Name = "btnSplitePage";
             this.btnSplitePage.Size = new System.Drawing.Size(75, 23);
             this.btnSplitePage.TabIndex = 6;
@@ -158,7 +170,7 @@
             // 
             // tbSplitPdfPath
             // 
-            this.tbSplitPdfPath.Location = new System.Drawing.Point(66, 38);
+            this.tbSplitPdfPath.Location = new System.Drawing.Point(66, 83);
             this.tbSplitPdfPath.Name = "tbSplitPdfPath";
             this.tbSplitPdfPath.Size = new System.Drawing.Size(234, 21);
             this.tbSplitPdfPath.TabIndex = 1;
@@ -173,7 +185,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 41);
+            this.label2.Location = new System.Drawing.Point(13, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 0;
@@ -193,20 +205,20 @@
             this.pdfPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pdfPanel.Location = new System.Drawing.Point(0, 0);
             this.pdfPanel.Name = "pdfPanel";
-            this.pdfPanel.Size = new System.Drawing.Size(958, 601);
+            this.pdfPanel.Size = new System.Drawing.Size(958, 555);
             this.pdfPanel.TabIndex = 0;
             this.pdfPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.pdfPanel_Paint);
             this.pdfPanel.Resize += new System.EventHandler(this.pdfPanel_Resize);
             // 
-            // btnAddAnnot
+            // BtnGetAnnotCount
             // 
-            this.btnAddAnnot.Location = new System.Drawing.Point(856, 8);
-            this.btnAddAnnot.Name = "btnAddAnnot";
-            this.btnAddAnnot.Size = new System.Drawing.Size(75, 23);
-            this.btnAddAnnot.TabIndex = 7;
-            this.btnAddAnnot.Text = "添加注释";
-            this.btnAddAnnot.UseVisualStyleBackColor = true;
-            this.btnAddAnnot.Click += new System.EventHandler(this.btnAddAnnot_Click);
+            this.BtnGetAnnotCount.Location = new System.Drawing.Point(12, 37);
+            this.BtnGetAnnotCount.Name = "BtnGetAnnotCount";
+            this.BtnGetAnnotCount.Size = new System.Drawing.Size(94, 23);
+            this.BtnGetAnnotCount.TabIndex = 7;
+            this.BtnGetAnnotCount.Text = "获取注释个数";
+            this.BtnGetAnnotCount.UseVisualStyleBackColor = true;
+            this.BtnGetAnnotCount.Click += new System.EventHandler(this.BtnGetAnnotCount_Click);
             // 
             // MainWindow
             // 
@@ -243,6 +255,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSplitePage;
         private System.Windows.Forms.Button btnAddAnnot;
+        private System.Windows.Forms.Button BtnGetAnnotCount;
     }
 }
 

@@ -92,3 +92,11 @@ MOONPDF_API_ void MoonGotoPage(int pageIndex);
  *  rightBottomY：右底点y值
  */
 MOONPDF_API_ void MoonAddTextAnnotation(char* context,char* author,int pageIndex,float leftTopX,float leftTopY,float rightBottomX,float rightBottomY);
+
+/**
+ * 函数说明：
+ *   获取pdf中注释的总数
+ * 返回值：
+ *   成功返回注释的数量，失败返回-1
+ */
+MOONPDF_API_ int MoonGetAnnotationCount();

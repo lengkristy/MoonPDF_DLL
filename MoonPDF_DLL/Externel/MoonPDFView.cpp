@@ -275,6 +275,39 @@ void MoonAddTextAnnotation(char* context, char* author, int pageIndex, float lef
 	pdfapp_save_draw(&g_moonPdfApp);
 }
 
+/**
+* 函数说明：
+*   获取pdf中注释的总数
+* 返回值：
+*	成功返回注释的数量，失败返回-1
+*/
+int MoonGetAnnotationCount()
+{
+	int annotAccount = 0;
+	int pageCount = 0;
+	pdf_document *idoc;
+	pdf_page* pPage = NULL;
+	pdf_annot* pAnnot = NULL;
+	int index = 0;
+	idoc = pdf_specifics(g_moonPdfApp.ctx, g_moonPdfApp.doc);
+	//获取总页数
+	pageCount = MoonGetPDFPageCount();
+	for (int index = 0; index < pageCount; index++)
+	{
+		pPage = pdf_load_page(g_moonPdfApp.ctx, idoc, index);
+		pAnnot = pdf_first_annot(g_moonPdfApp.ctx, pPage);
+		if (pAnnot != NULL)
+		{
+			annotAccount++;
+			while ((pAnnot = pdf_next_annot(g_moonPdfApp.ctx, pAnnot)) != NULL){
+				annotAccount++;
+			}
+		}
+	}
+	
+	return 0;
+}
+
 
 //////////////////////////////////////////////////////定义pdf 信息框///////////////////////////////////////////////////////////////////
 /*
