@@ -56,6 +56,7 @@ CMFCMoonPdfTestDlg::CMFCMoonPdfTestDlg(CWnd* pParent /*=NULL*/)
 void CMFCMoonPdfTestDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_BTN_PDF, m_btnpdfview);
 }
 
 BEGIN_MESSAGE_MAP(CMFCMoonPdfTestDlg, CDialogEx)
@@ -107,7 +108,9 @@ BOOL CMFCMoonPdfTestDlg::OnInitDialog()
 
 	//
 	//CWnd* pdfWnd = this->GetDlgItem(IDC_STATIC_PDF_VIEW);
-	WindowCompentInit(this->m_hWnd);
+	CWnd * pWnd = GetDlgItem(IDC_BTN_PDF);
+	HDC hdc = pWnd->GetDC()->GetSafeHdc();
+	WindowCompentInitByHdc(hdc);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -151,6 +154,7 @@ void CMFCMoonPdfTestDlg::OnPaint()
 	{
 		CDialogEx::OnPaint();
 	}
+	MoonPaintPDF();
 }
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
@@ -184,9 +188,9 @@ void CMFCMoonPdfTestDlg::OnBnClickedBtnSelectFile()
 
 	CRect rectCtrl;
 	//this->GetDlgItem(IDC_STATIC_PDF_VIEW)->GetClientRect(rectCtrl);
-	this->GetClientRect(&rectCtrl);
+	m_btnpdfview.GetClientRect(&rectCtrl);
 	//重绘界面
 	MoonResizePDF(rectCtrl.Width(),rectCtrl.Height());
-
+	MoonPaintPDF();
 	delete ch;
 }

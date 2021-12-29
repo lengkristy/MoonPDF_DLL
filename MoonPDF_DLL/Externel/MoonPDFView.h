@@ -10,11 +10,19 @@
 
 /***
  * 函数说明：
- *   窗体组件初始化
+ *   使用HWND进行渲染组件初始化
  * 参数：
  *   hWnd：显示的窗体句柄
  */
 MOONPDF_API_ int WindowCompentInit(HWND hWnd);
+
+/***
+* 函数说明：
+*   使用hdc进行渲染组件初始化
+* 参数：
+*   hWnd：显示的窗体句柄
+*/
+MOONPDF_API_ int WindowCompentInitByHdc(HDC hdc);
 
 /***
  * 函数说明：

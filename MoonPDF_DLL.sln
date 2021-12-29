@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoonPDF_DLL", "MoonPDF_DLL\MoonPDF_DLL.vcxproj", "{0534001B-A239-4231-BC99-D3A65FAA67F5}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MoonPDFCPP_Test", "MoonPDFCPP_Test\MoonPDFCPP_Test.vcxproj", "{5E65AF5D-662F-4A0A-AA4B-7C029B153F0B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCMoonPdfTest", "MFCMoonPdfTest\MFCMoonPdfTest.vcxproj", "{5396CCBF-5B91-4572-ACC1-5B72C25305C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DuilibMoonPDF_DLL_Test", "DuilibMoonPDF_DLL_Test\DuilibMoonPDF_DLL_Test.vcxproj", "{DA05A194-321D-4760-BCC8-3E67B7DC0A21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,22 @@ Global
 		{5396CCBF-5B91-4572-ACC1-5B72C25305C8}.Release|x64.ActiveCfg = Release|Win32
 		{5396CCBF-5B91-4572-ACC1-5B72C25305C8}.Release|x86.ActiveCfg = Release|Win32
 		{5396CCBF-5B91-4572-ACC1-5B72C25305C8}.Release|x86.Build.0 = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|Win32.Build.0 = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|x64.ActiveCfg = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|x86.ActiveCfg = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Debug|x86.Build.0 = Debug|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|Any CPU.ActiveCfg = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|Win32.ActiveCfg = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|Win32.Build.0 = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|x64.ActiveCfg = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|x86.ActiveCfg = Release|Win32
+		{DA05A194-321D-4760-BCC8-3E67B7DC0A21}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

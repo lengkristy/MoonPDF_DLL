@@ -8,7 +8,7 @@
 
 
 //pdf绘制到界面上
-void WinBlit()
+void WinBlit(HDC hdc)
 {
 	int justcopied = 0;
 	if (!g_moonPdfApp.image)
@@ -25,7 +25,7 @@ void WinBlit()
 	int y1 = g_moonPdfApp.pany + image_h;
 	RECT r;
 	HBRUSH brush;
-	HDC hdc = GetDC(g_hShowPdfWnd);
+	
 	if (g_moonPdfApp.image)
 	{
 		if (g_moonPdfApp.iscopying || justcopied)
@@ -91,7 +91,6 @@ void WinBlit()
 	FillRect(hdc, &r, brush);
 	r.top = y1; r.bottom = g_moonPdfApp.winh;
 	FillRect(hdc, &r, brush);
-	ReleaseDC(g_hShowPdfWnd, hdc);
 }
 
 /***
@@ -113,6 +112,45 @@ int WindowCompentInit(HWND hWnd)
 
 	/* Init DIB info for buffer */
 	g_dibinf = (BITMAPINFO*)malloc(sizeof(BITMAPINFO) + 12);
+	g_dibinf->bmiHeader.biSize = sizeof(g_dibinf->bmiHeader);
+	g_dibinf->bmiHeader.biPlanes = 1;
+	g_dibinf->bmiHeader.biBitCount = 32;
+	g_dibinf->bmiHeader.biCompression = BI_RGB;
+	g_dibinf->bmiHeader.biXPelsPerMeter = 2834;
+	g_dibinf->bmiHeader.biYPelsPerMeter = 2834;
+	g_dibinf->bmiHeader.biClrUsed = 0;
+	g_dibinf->bmiHeader.biClrImportant = 0;
+	g_dibinf->bmiHeader.biClrUsed = 0;
+
+	//创建光标
+	arrowcurs = LoadCursor(NULL, IDC_ARROW);
+	handcurs = LoadCursor(NULL, IDC_HAND);
+	waitcurs = LoadCursor(NULL, IDC_WAIT);
+	caretcurs = LoadCursor(NULL, IDC_IBEAM);
+	SetCursor(arrowcurs);
+
+	return 0;
+}
+
+/***
+* 函数说明：
+*   使用hdc进行渲染组件初始化
+* 参数：
+*   hWnd：显示的窗体句柄
+*/
+int WindowCompentInitByHdc(HDC hdc)
+{
+	if (g_moonPdfCtx == NULL)
+	{
+		MessageBox(NULL, L"环境未初始化", L"", MB_OK);
+		return -1;
+	}
+	g_hdc = hdc;
+	/* 创建画刷背景颜色 */
+	g_bgbrush = CreateSolidBrush(RGB(0x70, 0x70, 0x70));
+
+	/* Init DIB info for buffer */
+	g_dibinf = (BITMAPINFO*)malloc(sizeof(BITMAPINFO)+12);
 	g_dibinf->bmiHeader.biSize = sizeof(g_dibinf->bmiHeader);
 	g_dibinf->bmiHeader.biPlanes = 1;
 	g_dibinf->bmiHeader.biBitCount = 32;
@@ -164,7 +202,17 @@ int MoonPDFLoad(char *pdfPath)
 */
 void MoonPaintPDF()
 {
-	WinBlit();
+	HDC hdc = NULL;
+	if (g_hShowPdfWnd != NULL)
+	{
+		hdc = GetDC(g_hShowPdfWnd);
+		WinBlit(hdc);
+		ReleaseDC(g_hShowPdfWnd, hdc);
+	}
+	else if (g_hdc != NULL)
+	{
+		WinBlit(g_hdc);
+	}
 }
 
 

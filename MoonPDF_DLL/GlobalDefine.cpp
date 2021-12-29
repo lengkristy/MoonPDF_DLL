@@ -35,6 +35,11 @@ _GLOBAL_ int g_justcopied = 0;
 _GLOBAL_ HWND g_hShowPdfWnd = NULL;
 
 /**
+ *用于画pdf，如果不使用窗体句柄，则使用hdc画pdf
+ */
+_GLOBAL_ HDC g_hdc = NULL;
+
+/**
  *
  */
 _GLOBAL_ HCURSOR arrowcurs, handcurs, waitcurs, caretcurs;//

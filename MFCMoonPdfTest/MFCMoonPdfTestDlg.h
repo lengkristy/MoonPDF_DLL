@@ -3,6 +3,8 @@
 //
 
 #pragma once
+#include "afxcmn.h"
+#include "afxwin.h"
 
 
 // CMFCMoonPdfTestDlg ¶Ô»°¿ò
@@ -31,4 +33,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedBtnSelectFile();
+	CButton m_btnpdfview;
 };

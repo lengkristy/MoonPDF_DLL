@@ -33,4 +33,6 @@ extern int g_justcopied;//
 
 extern HWND g_hShowPdfWnd;//显示pdf的窗体句柄
 
+extern HDC  g_hdc;//用于画pdf，如果不使用窗体句柄，则使用hdc画pdf
+
 extern HCURSOR arrowcurs, handcurs, waitcurs, caretcurs;//光标
