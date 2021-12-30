@@ -25,7 +25,7 @@ void WinBlit(HDC hdc)
 	int y1 = g_moonPdfApp.pany + image_h;
 	RECT r;
 	HBRUSH brush;
-	
+
 	if (g_moonPdfApp.image)
 	{
 		if (g_moonPdfApp.iscopying || justcopied)
@@ -97,7 +97,7 @@ void WinBlit(HDC hdc)
 * 函数说明：
 *   窗体组件初始化
 * 参数：
-*   hWnd：显示的窗体句柄
+*   hWnd：显示的窗体句柄，可传空，如果传空，那么在调用MoonPaintPDF函数的时候必须传hdc
 */
 int WindowCompentInit(HWND hWnd)
 {
@@ -134,51 +134,12 @@ int WindowCompentInit(HWND hWnd)
 
 /***
 * 函数说明：
-*   使用hdc进行渲染组件初始化
-* 参数：
-*   hWnd：显示的窗体句柄
-*/
-int WindowCompentInitByHdc(HDC hdc)
-{
-	if (g_moonPdfCtx == NULL)
-	{
-		MessageBox(NULL, L"环境未初始化", L"", MB_OK);
-		return -1;
-	}
-	g_hdc = hdc;
-	/* 创建画刷背景颜色 */
-	g_bgbrush = CreateSolidBrush(RGB(0x70, 0x70, 0x70));
-
-	/* Init DIB info for buffer */
-	g_dibinf = (BITMAPINFO*)malloc(sizeof(BITMAPINFO)+12);
-	g_dibinf->bmiHeader.biSize = sizeof(g_dibinf->bmiHeader);
-	g_dibinf->bmiHeader.biPlanes = 1;
-	g_dibinf->bmiHeader.biBitCount = 32;
-	g_dibinf->bmiHeader.biCompression = BI_RGB;
-	g_dibinf->bmiHeader.biXPelsPerMeter = 2834;
-	g_dibinf->bmiHeader.biYPelsPerMeter = 2834;
-	g_dibinf->bmiHeader.biClrUsed = 0;
-	g_dibinf->bmiHeader.biClrImportant = 0;
-	g_dibinf->bmiHeader.biClrUsed = 0;
-
-	//创建光标
-	arrowcurs = LoadCursor(NULL, IDC_ARROW);
-	handcurs = LoadCursor(NULL, IDC_HAND);
-	waitcurs = LoadCursor(NULL, IDC_WAIT);
-	caretcurs = LoadCursor(NULL, IDC_IBEAM);
-	SetCursor(arrowcurs);
-
-	return 0;
-}
-
-/***
-* 函数说明：
 *   加载显示PDF
 * 参数说明：
 *   hWnd：加载的窗体句柄
 *   pdfPath:文件路径
 */
-int MoonPDFLoad(char *pdfPath)
+int MoonPDFLoad(const char *pdfPath)
 {
 	if (g_moonPdfCtx == NULL)
 	{
@@ -199,19 +160,19 @@ int MoonPDFLoad(char *pdfPath)
 /***
 * 函数说明
 *   将pdf显示到界面
+* @pamra hdc：可传空，如果为空，则使用初始化穿的wnd，不为空则使用传入的hdc
 */
-void MoonPaintPDF()
+void MoonPaintPDF(HDC hdc)
 {
-	HDC hdc = NULL;
 	if (g_hShowPdfWnd != NULL)
 	{
-		hdc = GetDC(g_hShowPdfWnd);
-		WinBlit(hdc);
-		ReleaseDC(g_hShowPdfWnd, hdc);
+		HDC dc = GetDC(g_hShowPdfWnd);
+		WinBlit(dc);
+		ReleaseDC(g_hShowPdfWnd, dc);
 	}
-	else if (g_hdc != NULL)
+	else if (hdc != NULL)
 	{
-		WinBlit(g_hdc);
+		WinBlit(hdc);
 	}
 }
 
@@ -352,7 +313,7 @@ int MoonGetAnnotationCount()
 			}
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -482,7 +443,7 @@ void windrawrect(pdfapp_t *app, int x0, int y0, int x1, int y1)
 	r.right = x1;
 	r.bottom = y1;
 	FillRect(hdc, &r, (HBRUSH)GetStockObject(WHITE_BRUSH));
-	ReleaseDC(g_hShowPdfWnd,hdc);
+	ReleaseDC(g_hShowPdfWnd, hdc);
 }
 
 void windrawstring(pdfapp_t *app, int x, int y, char *s)

@@ -4,11 +4,28 @@
 #include "stdafx.h"
 #include "DuilibMoonPDF_DLL_Test.h"
 #include "BasicForm.h"
+#include "MoonPDF.h"
 
 enum ThreadId
 {
 	kThreadUI
 };
+
+//将wstring转换成string  
+std::string wstring2string(std::wstring wstr)
+{
+	std::string result;
+	//获取缓冲区大小，并申请空间，缓冲区大小事按字节计算的  
+	int len = WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), NULL, 0, NULL, NULL);
+	char* buffer = new char[len + 1];
+	//宽字节编码转换成多字节编码  
+	WideCharToMultiByte(CP_ACP, 0, wstr.c_str(), wstr.size(), buffer, len, NULL, NULL);
+	buffer[len] = '\0';
+	//删除缓冲区并返回值  
+	result.append(buffer);
+	delete[] buffer;
+	return result;
+}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -32,8 +49,25 @@ void MainThread::Init()
 	nbase::ThreadManager::RegisterThread(kThreadUI);
 
 	// 获取资源路径，初始化全局参数
-	
-	std::wstring theme_dir = nbase::win32::GetCurrentModuleDirectory();
+	wchar_t buffer[MAX_PATH];
+	GetCurrentDirectory(MAX_PATH, buffer);
+	//std::wstring theme_dir = nbase::win32::GetCurrentModuleDirectory();
+	std::wstring theme_dir = buffer;
+	theme_dir += L"\\";
+
+	//初始化pdf库
+	int ret = InitMoonPDFEnvironment();
+	if (ret == -1)
+		return;
+	ret = WindowCompentInit(NULL);
+	if (ret == -1)
+		return;
+	std::string path = wstring2string(theme_dir);
+	path = path + "081003-01.pdf";
+	ret = MoonPDFLoad(path.c_str());
+	if (ret == -1)
+		return;
+	MoonResizePDF(640, 480);
 #ifdef _DEBUG
 	// Debug 模式下使用本地文件夹作为资源
 	// 默认皮肤使用 resources\\themes\\default

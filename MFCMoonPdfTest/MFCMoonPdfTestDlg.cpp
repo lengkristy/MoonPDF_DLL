@@ -107,10 +107,7 @@ BOOL CMFCMoonPdfTestDlg::OnInitDialog()
 	}
 
 	//
-	//CWnd* pdfWnd = this->GetDlgItem(IDC_STATIC_PDF_VIEW);
-	CWnd * pWnd = GetDlgItem(IDC_BTN_PDF);
-	HDC hdc = pWnd->GetDC()->GetSafeHdc();
-	WindowCompentInitByHdc(hdc);
+	WindowCompentInit(NULL); 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -154,7 +151,11 @@ void CMFCMoonPdfTestDlg::OnPaint()
 	{
 		CDialogEx::OnPaint();
 	}
-	MoonPaintPDF();
+	CWnd * pWnd = GetDlgItem(IDC_BTN_PDF);
+	CDC *pDC = pWnd->GetDC();
+	HDC hdc = pDC->GetSafeHdc();
+
+	MoonPaintPDF(hdc);
 }
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
@@ -191,6 +192,5 @@ void CMFCMoonPdfTestDlg::OnBnClickedBtnSelectFile()
 	m_btnpdfview.GetClientRect(&rectCtrl);
 	//重绘界面
 	MoonResizePDF(rectCtrl.Width(),rectCtrl.Height());
-	MoonPaintPDF();
 	delete ch;
 }

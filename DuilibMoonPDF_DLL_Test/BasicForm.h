@@ -26,4 +26,22 @@ public:
 	virtual LRESULT OnClose(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
 
 	static const std::wstring kClassName;
+
+	/**
+	* 根据控件类名创建自定义控件
+	* @param[in] pstrClass 控件类名
+	* @return Control* 创建的控件的指针
+	*/
+	virtual ui::Control* CreateControl(const std::wstring& pstrClass) override;
+
+private:
+	ui::Button* m_pBtnMax;
+
+private:
+	/**
+	* 处理主窗口弹出菜单按钮的单击消息
+	* @param[in] msg 消息的相关信息
+	* @return bool true 继续传递控件消息，false 停止传递控件消息
+	*/
+	bool MainMenuButtonClick(ui::EventArgs* param);
 };

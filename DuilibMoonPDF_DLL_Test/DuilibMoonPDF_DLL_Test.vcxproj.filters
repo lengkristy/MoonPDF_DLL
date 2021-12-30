@@ -33,7 +33,7 @@
     <ClInclude Include="BasicForm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="PdfControlBase.h">
+    <ClInclude Include="PdfControl.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="BasicForm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PdfControlBase.cpp">
+    <ClCompile Include="PdfControl.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
