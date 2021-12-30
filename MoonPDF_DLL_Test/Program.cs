@@ -16,7 +16,8 @@ namespace MoonPDF_DLL_Test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+
+            Application.Run(new MainWindow()); 
         }
     }
 }
